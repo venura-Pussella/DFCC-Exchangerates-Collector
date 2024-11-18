@@ -42,42 +42,42 @@ async def main():
         await write_exchange_rates_to_cosmosdb(cosmos_db_documents_json)
         logger.info("Completion of data ingestion to Cosmos DB.")
 
-        # Send_log to monitoring service
-        send_log(
+    #     # Send_log to monitoring service
+    #     send_log(
 
-            service_type="Azure Function",
-            application_name="DFCC Exchangerates Collector",
-            project_name="Dockit Exchange Rates History",
-            project_sub_name="Exchangerates History",
-            azure_hosting_name="AI Services",
-            developmental_language="Python",
-            description="Bank Exchange Rates - Function Application",
-            created_by="BrownsAIseviceTest",
-            log_print="Successfully completed data ingestion to Cosmos DB.",
-            running_within_minutes=1440,
-            error_id=0
+    #         service_type="Azure Function",
+    #         application_name="DFCC Exchangerates Collector",
+    #         project_name="Dockit Exchange Rates History",
+    #         project_sub_name="Exchangerates History",
+    #         azure_hosting_name="AI Services",
+    #         developmental_language="Python",
+    #         description="Bank Exchange Rates - Function Application",
+    #         created_by="BrownsAIseviceTest",
+    #         log_print="Successfully completed data ingestion to Cosmos DB.",
+    #         running_within_minutes=1440,
+    #         error_id=0
 
-        )
-        logger.info("sent success log to function monitoring service.")
+    #     )
+    #     logger.info("sent success log to function monitoring service.")
 
     except Exception as e:
         # send_error_log to monitoring service
         logger.error(f"An error occurred: {e}")
 
-        send_log(
-            service_type="Azure Function",
-            application_name="DFCC Exchangerates Collector",
-            project_name="Dockit Exchange Rates History",
-            project_sub_name="Exchangerates History",
-            azure_hosting_name="AI Services",
-            developmental_language="Python",
-            description="Bank Exchange Rates - Function Application",
-            created_by="BrownsAIseviceTest",
-            log_print="An error occurred: " + str(e),
-            running_within_minutes=1440,
-            error_id=1,
-            # SMSSenderGroupId=2
-        )
+    #     send_log(
+    #         service_type="Azure Function",
+    #         application_name="DFCC Exchangerates Collector",
+    #         project_name="Dockit Exchange Rates History",
+    #         project_sub_name="Exchangerates History",
+    #         azure_hosting_name="AI Services",
+    #         developmental_language="Python",
+    #         description="Bank Exchange Rates - Function Application",
+    #         created_by="BrownsAIseviceTest",
+    #         log_print="An error occurred: " + str(e),
+    #         running_within_minutes=1440,
+    #         error_id=1,
+    #         # SMSSenderGroupId=2
+    #     )
 
         raise
 def run_main():
