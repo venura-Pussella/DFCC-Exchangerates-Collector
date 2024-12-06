@@ -14,7 +14,7 @@ async def fetch_url():
         page = await context.new_page()
         
         # Navigate to the URL
-        await page.goto(url, timeout=30000)
+        await page.goto(url, timeout=50000)
         
         # Get the content of the page
         content = await page.content()
